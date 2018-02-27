@@ -11,16 +11,20 @@ public class ShipMovement : MonoBehaviour
     AudioSource audioSource;
 
 
-    public AudioClip engineAudioClip;
-    public float rotationSpeed = 10f;
-    public float thrustSpeed = 100f;
+    private AudioClip engineAudioClip;
+    [SerializeField] float rotationSpeed = 10f;
+    [SerializeField] float thrustSpeed = 1000f;
+
+    public AudioClip EngineAudioClip;
+
+
     // Use this for initialization
     void Start()
     {
 
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
-        audioSource.clip = engineAudioClip;
+        audioSource.clip = EngineAudioClip;
     }
 
     // Update is called once per frame
@@ -68,4 +72,27 @@ public class ShipMovement : MonoBehaviour
         rb.freezeRotation = false;
 
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "Danger":
+                {
+                    print("Take Damage");
+                    break;
+                }
+
+
+
+
+
+            default:
+                {
+                    print("It's Okay");
+                    break;
+                }
+        }
+    }
+
 }
