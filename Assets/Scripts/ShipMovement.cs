@@ -12,8 +12,8 @@ public class ShipMovement : MonoBehaviour
 
 
     private AudioClip engineAudioClip;
-    public float rotationSpeed = 10f;
-    public float thrustSpeed = 100f;
+    [SerializeField] float rotationSpeed = 10f;
+    [SerializeField] float thrustSpeed = 1000f;
 
     public AudioClip EngineAudioClip;
 
@@ -72,4 +72,27 @@ public class ShipMovement : MonoBehaviour
         rb.freezeRotation = false;
 
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "Danger":
+                {
+                    print("Take Damage");
+                    break;
+                }
+
+
+
+
+
+            default:
+                {
+                    print("It's Okay");
+                    break;
+                }
+        }
+    }
+
 }
