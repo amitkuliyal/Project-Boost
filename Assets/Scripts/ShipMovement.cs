@@ -11,16 +11,20 @@ public class ShipMovement : MonoBehaviour
     AudioSource audioSource;
 
 
-    public AudioClip engineAudioClip;
+    private AudioClip engineAudioClip;
     public float rotationSpeed = 10f;
     public float thrustSpeed = 100f;
+
+    public AudioClip EngineAudioClip;
+
+
     // Use this for initialization
     void Start()
     {
 
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
-        audioSource.clip = engineAudioClip;
+        audioSource.clip = EngineAudioClip;
     }
 
     // Update is called once per frame
